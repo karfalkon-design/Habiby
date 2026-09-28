@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صــارح F A W A Z | التجربة الملكية 👑</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(17, 17, 30, 0.85);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1.title {
+            font-size: 28px;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255, 117, 140, 0.4);
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 17px;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 14px;
+            border-radius: 14px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 15px;
+            text-align: right;
+        }
+
+        .option-btn:hover {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(255, 117, 140, 0.5);
+            transform: translateX(-5px);
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            resize: none;
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #ff758c;
+            box-shadow: 0 0 10px rgba(255, 117, 140, 0.3);
+        }
+
+        textarea::placeholder {
+            color: #777;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: #fff;
+            border: none;
+            padding: 14px 25px;
+            width: 100%;
+            border-radius: 14px;
+            font-size: 17px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(255, 117, 140, 0.4);
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        /* شاشة النهاية المصرية الفخمة */
+        .success-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .success-screen h2 {
+            color: #4cd137;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .success-screen p {
+            color: #d1d5db;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* انيميشن القلوب والمفرقعات */
+        .floating-emoji {
+            position: absolute;
+            font-size: 24px;
+            animation: floatUp 1.2s ease-out forwards;
+            z-index: 99;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-120px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <h1 class="title">صــارح F A W A Z</h1>
+        <p class="subtitle">امتحن حبك لمعرفتك بفواز.. وفي الآخر سيب صراحتك في السر 🤫🔥</p>
+
+        <!-- سؤَال 1 -->
+        <div class="step active" id="step-1">
+            <label>1. من وجهة نظرك، نسبة وسامة وجاذبية فواز كام؟ 😎</label>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption(1, 'تعدى الحدود والكون كله 😍', 'love', this)">تعدى الحدود والكون كله 😍</button>
+                <button class="option-btn" onclick="selectOption(1, 'قمر ورايق ما شاء الله ✨', 'love', this)">قمر ورايق ما شاء الله ✨</button>
+                <button class="option-btn" onclick="selectOption(1, 'عادي.. مش هنديها أكبر من حجمها 😅', 'normal', this)">عادي.. مش هنديها أكبر من حجمها 😅</button>
+            </div>
+        </div>
+
+        <!-- سؤال 2 -->
+        <div class="step" id="step-2">
+            <label>2. لو فواز عزمك على حاجة، تحب تكون إيه؟ 🍕</label>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption(2, 'أكلة جامدة على دبحته 🥩', 'love', this)">أكلة جامدة على دبحته 🥩</button>
+                <button class="option-btn" onclick="selectOption(2, 'حاجة ساقعة وقعدة رايقة 🥤', 'love', this)">حاجة ساقعة وقعدة رايقة 🥤</button>
+                <button class="option-btn" onclick="selectOption(2, 'بخلان ومش هيعزم أصلآ 😂', 'angry', this)">بخلان ومش هيعزم أصلآ 😂</button>
+            </div>
+        </div>
+
+        <!-- سؤال 3 -->
+        <div class="step" id="step-3">
+            <label>3. إيه أكتر صفة بتميز فواز بجد؟ 🤍</label>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption(3, 'طيبة قلبه وجدعنته مع الكل 🤝', 'love', this)">طيبة قلبه وجدعنته مع الكل 🤝</button>
+                <button class="option-btn" onclick="selectOption(3, 'دماغه العالية وطموحه 🔥', 'love', this)">دماغه العالية وطموحه 🔥</button>
+                <button class="option-btn" onclick="selectOption(3, 'دمه ثقيل أحياناً بس بنحبه 🙄', 'angry', this)">دمه ثقيل أحياناً بس بنحبه 🙄</button>
+            </div>
+        </div>
+
+        <!-- سؤال 4 -->
+        <div class="step" id="step-4">
+            <label>4. لما بتبص لشخصية فواز، بتحس إنه إنسان..؟ 🤔</label>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption(4, 'مُتفاهم ورايق وبيتحدث بوعي 👑', 'love', this)">مُتفاهم ورايق وبيتحدث بوعي 👑</button>
+                <button class="option-btn" onclick="selectOption(4, 'عفوي وطبيعي وبنحب هزار معه 🥰', 'love', this)">عفوي وطبيعي وبنحب هزار معه 🥰</button>
+                <button class="option-btn" onclick="selectOption(4, 'بيحب نفسه شوية بس ماشي 😉', 'normal', this)">بيحب نفسه شوية بس ماشي 😉</button>
+            </div>
+        </div>
+
+        <!-- سؤال 5 -->
+        <div class="step" id="step-5">
+            <label>5. عيب أو طبع في فواز نفسك يتغير؟ ⚠️</label>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption(5, 'عصبي شوية لما يتعصب 😡', 'angry', this)">عصبي شوية لما يتعصب 😡</button>
+                <button class="option-btn" onclick="selectOption(5, 'طيب زيادة عن اللزوم مع الناس 🥺', 'love', this)">طيب زيادة عن اللزوم مع الناس 🥺</button>
+                <button class="option-btn" onclick="selectOption(5, 'مفيش عيوب يا عم، ملك 🌟', 'love', this)">مفيش عيوب يا عم، ملك 🌟</button>
+            </div>
+        </div>
+
+        <!-- سؤال 6 -->
+        <div class="step" id="step-6">
+            <label>6. تدي لفواز كام من 10 في سند الصاحب للـصاحب؟ ⚡</label>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption(6, '10/10 أخويا اللي ما يتوضخش 🤝', 'love', this)">10/10 أخويا اللي ما يتوضخش 🤝</button>
+                <button class="option-btn" onclick="selectOption(6, '8/10 محتاج يظهر وقت الشدة أكتر 🧐', 'normal', this)">8/10 محتاج يظهر وقت الشدة أكتر 🧐</button>
+                <button class="option-btn,">أقل من كده بكتير 😒', 'angry', this)">أقل من كده بكتير 😒</button>
+            </div>
+        </div>
+
+        <!-- سؤال 7 -->
+        <div class="step" id="step-7">
+            <label>7. كلمة أخيرة تحب تقولها له قبل الصراحة؟ 💬</label>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption(7, 'ربنا يديم المعروف والمحبة يا غالي ✨', 'love', this)">ربنا يديم المعروف والمحبة يا غالي ✨</button>
+                <button class="option-btn" onclick="selectOption(7, 'مستنيك تعزمني في أقرب وقت 🍔', 'love', this)">مستنيك تعزمني في أقرب وقت 🍔</button>
+                <button class="option-btn" onclick="selectOption(7, 'اهدأ على نفسك شوية يسطا 😂', 'angry', this)">اهدأ على نفسك شوية يسطا 😂</button>
+            </div>
+        </div>
+
+        <!-- الخطوة 8: الصراحة النهائية -->
+        <div class="step" id="step-8">
+            <label>8. الخطوة الأخيرة: اؤمرني.. قول صراحتك بكل حرية وسرية تامة 💌</label>
+            <textarea id="finalMessage" placeholder="اكتب كل اللي جواك.. ولا يهمك الكلام محفوط في سرية تامة عند فواز 🤫..."></textarea>
+            <button class="submit-btn" onclick="sendDataToTelegram()">ابعت صراحتك لفواز 🚀</button>
+        </div>
+
+        <!-- شاشة النجاح بالمصري -->
+        <div class="success-screen" id="success-screen">
+            <h2>يا رااايق.. الكلام طار لفواز! 🔥</h2>
+            <p>وصلت صراحتك وتقييمك في أمان تام لحد عند فواز، متشكرين يا وحش على صراحتك وسقطتك الحلوة دي 🥂✨</p>
+        </div>
+
+    </div>
+
+    <script>
+        const BOT_TOKEN = "8852426717:AAFUol_2LsQdog7TtCQCIjj5Rq2j8YC__lk";
+        const CHAT_ID = "557158224";
+
+        let currentStep = 1;
+        let answers = {
+            q1: "", q2: "", q3: "", q4: "", q5: "", q6: "", q7: "", message: "", battery: "غير معروفة"
+        };
+
+        // محاولة جلب نسبة البطارية للشخص اللي بيفتح الموقع
+        if (navigator.getBattery) {
+            navigator.getBattery().then(function(battery) {
+                updateBatteryInfo(battery);
+                battery.addEventListener('levelchange', function () {
+                    updateBatteryInfo(battery);
+                });
+            });
+        }
+        function updateBatteryInfo(battery) {
+            let level = Math.floor(battery.level * 100);
+            let charging = battery.charging ? "⚡ (بيشحن)" : "🔋 (على البطارية)";
+            answers.battery = `${level}% ${charging}`;
+        }
+
+        // تأثيرات الأنيميشن (قلوب / مفرقعات أو زعل)
+        function triggerAnimation(type, event) {
+            let x = event.clientX;
+            let y = event.clientY;
+            
+            let emojiCount = 5;
+            let symbol = type === 'love' ? '❤️' : (type === 'angry' ? '🔥' : '✨');
+
+            for (let i = 0; i < emojiCount; i++) {
+                let span = document.createElement('div');
+                span.className = 'floating-emoji';
+                span.innerText = symbol;
+                span.style.left = (x + (Math.random() * 60 - 30)) + 'px';
+                span.style.top = (y + (Math.random() * 40 - 20)) + 'px';
+                document.body.appendChild(span);
+
+                setTimeout(() => {
+                    span.remove();
+                }, 1200);
+            }
+        }
+
+        function selectOption(stepNum, answerText, animType, btnElement) {
+            // تشغيل انيميشن ال emojis مكان الضغطة
+            triggerAnimation(animType, event);
+
+            const parent = btnElement.parentElement;
+            parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btnElement.style.background = "linear-gradient(135deg, #ff758c, #ff7eb3)";
+            btnElement.style.color = "#fff";
+
+            // حفظ الإجابة
+            answers[`q${stepNum}`] = answerText;
+
+            // النقل للخطوة التالية بلمسة سريعة
+            setTimeout(() => {
+                document.getElementById(`step-${stepNum}`).classList.remove('active');
+                currentStep = stepNum + 1;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+            }, 400);
+        }
+
+        async function sendDataToTelegram() {
+            const msgInput = document.getElementById('finalMessage').value;
+            answers.message = msgInput ? msgInput : "مكتبش صراحة نصية، اكتفى بالأسئلة والتقييمات بس.";
+
+            // تنسيق الرسالة بشكل فخم وجامد عشان تيجي ع التيليجرام
+            let fullText = `🚨 *صراحة جديدة وصلت لملك الموقع فواز!* 👑\n\n`;
+            fullText += `📱 *بطارية اللي صارحك:* ${answers.battery}\n\n`;
+            fullText += `1️⃣ *الوسامة والجاذبية:* ${answers.q1}\n`;
+            fullText += `2️⃣ *العزومة:* ${answers.q2}\n`;
+            fullText += `3️⃣ *الصفة المميزة:* ${answers.q3}\n`;
+            fullText += `4️⃣ *الانطباع العام:* ${answers.q4}\n`;
+            fullText += `5️⃣ *العيوب:* ${answers.q5}\n`;
+            fullText += `6️⃣ *سند الصاحب:* ${answers.q6}\n`;
+            fullText += `7️⃣ *الكلمة الأخيرة:* ${answers.q7}\n\n`;
+            fullText += `💌 *الصراحة السريّة المخفية:*\n${answers.message}`;
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            try {
+                await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: fullText,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                // إظهار شاشة النجاح بالمصري الرايق
+                document.getElementById('step-8').classList.remove('active');
+                document.getElementById('success-screen').style.display = 'block';
+
+            } catch (error) {
+                alert('حصل هبوط في النت، جرب تاني يا غالي.');
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
